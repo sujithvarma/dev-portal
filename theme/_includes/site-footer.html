@@ -5,7 +5,7 @@
                     <div class="row">
                         <div class="col-md-12">
                             <a href="#" title="SingularityNET">
-                                <img src="./assets/images/Logo.png" alt="SingularityNET"/>
+                                <img src="{% if jekyll.environment == 'production' %}{{ site.snet.baseurl }}{% endif %}/theme/assets/images/layout/logo.png" class="logo">    
                             </a>
                         </div>
                     </div>
