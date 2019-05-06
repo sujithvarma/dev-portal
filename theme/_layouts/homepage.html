@@ -1,93 +1,182 @@
 <!DOCTYPE html>
 <html>
-	<head>
-		{% include site-head.html %}
-	</head>
-	<body class="{{ site.snet.color_theme }}">
-		{% include site-header.html %}
-		<div class="hero-subheader-home{% if page.grid_navigation %} hero-subheader--before-out{% endif %}">
-			<div class="container">
-				<div class="row">
-					<div class="col-md-7">
-						<div class="align-container" data-mh>
-							<div class="align-inner">
-								{% if page.title %}
-									<h1 class="hero-subheader__title">{{ page.title }}</h1>
-								{% endif %}
-								{% if page.description %}
-									<p class="hero-subheader__desc">{{ page.description }}</p>
-								{% endif %}
-								{% for button in page.buttons %}
-									{% if button.external_url == true %}
-									<a href="{{ button.url }}" class="btn btn--dark btn--rounded btn--w-icon">
-										{% if button.icon %}<i class="icon icon--{{ button.icon }}"></i>{% endif %}
-										{{ button.content }}
-									</a>
-									{% else %}
-									<a href="{% if jekyll.environment == 'production' %}{{ site.snet.baseurl }}{% endif %}{{ button.url }}" class="btn btn--dark btn--rounded btn--w-icon">
-										{% if button.icon %}<i class="icon icon--{{ button.icon }}"></i>{% endif %}
-										{{ button.content }}
-									</a>
-									{% endif %}
-								{% endfor %}
-							</div><!-- /.align-inner -->
-						</div><!-- /.align-container -->
-					</div><!-- /.col -->
-					{% if page.extralink.title and page.extralink.description and page.extralink.title_url %}
-						<div class="col-md-4 col-md-offset-1 hidden-xs hidden-sm">
-							<div class="align-container" data-mh>
-								<div class="align-inner">
-									<div class="hero-subheader__extralink">
-										<p class="hero-subheader__extralink-title">
-											{% if button.external_url == true %}
-											<a href="{{ page.extralink.title_url }}" class="btn btn--read-more">
-												{{ page.extralink.title }}
-												<i class="icon icon--arrow-right"></i>
-											</a>
-											{% else %}
-											<a href="{% if jekyll.environment == 'production' %}{{ site.snet.baseurl }}{% endif %}{{ page.extralink.title_url }}" class="btn btn--read-more">
-												{{ page.extralink.title }}
-												<i class="icon icon--arrow-right"></i>
-											</a>
-											{% endif %}
-										</p><!-- /.hero-subheader__extralink-title -->
-										<p>{{ page.extralink.description }}</p>
-									</div><!-- /.hero-subheader__extralink -->
-								</div><!-- /.align-inner -->
-							</div><!-- /.align-container -->
-						</div><!-- /.col -->
-					{% endif %}
-				</div><!-- /.row -->
-			</div><!-- /.container -->
-		</div><!-- /.hero-subheader -->
-		{% if page.grid_navigation %}
-			<div class="section section--darker-theme-color-bg">
-				<div class="container">
-					<div class="row">
-						<div class="col-md-12">
-							<div class="nav-grid nav-grid--out">
-								<div class="row">
-									{% for item in page.grid_navigation %}
-										<div class="col-sm-6 col-lg-4">
-											<a href="{% if jekyll.environment == 'production' %}{{ site.snet.baseurl }}{% endif %}{{ item.url }}" class="nav-grid__item">
-												<div class="nav-grid__content" data-mh>
-													<h2 class="nav-grid__title">{{ item.title }}</h2>
-													<p>{{ item.excerpt }}</p>
-												</div><!-- /.nav-grid__content -->
-												<p class="nav-grid__btn">
-													{{ item.cta }}
-													<i class="icon icon--arrow-right"></i>
-												</p>
-											</a><!-- /.nav-grid__item -->
-										</div><!-- /.col -->
-									{% endfor %}
-								</div><!-- /.row -->
-							</div><!-- /.nav-grid -->
-						</div><!-- /.col -->
-					</div><!-- /.row -->
-				</div><!-- /.container -->
-			</div><!-- /.section -->
-		{% endif %}
-		{% include site-footer.html %}
-	</body>
+    <head>
+        {% include site-head.html %}
+    </head>
+    <body class="{{ site.snet.color_theme }}">
+        <div class="container-fluid">  
+            <div class="banner">
+                <div class="wrapper">
+                    {% include site-header.html %}
+                    <div class="row">
+                        <div class="col-xs-12 col-sm-12 col-md-5">
+                            <div class="img-wrapper">
+                                <img src="{% if jekyll.environment == 'production' %}{{ site.snet.baseurl }}{% endif %}/theme/assets/images/layout/{{ page.title }}.png" alt="{{ page.title }}">                    
+                            </div>
+                        </div>
+                        <div class="col-xs-12 col-sm-12 col-md-7  banner-content">
+                            <h2>{{ page.title }}</h2>                
+                            <p>{{ page.description }}</p>
+                            <button class="btn">{{ page.cta }}</button>
+                        </div>
+                    </div>
+                </div>
+                <!-- waves -->
+                <div class="inner">
+                    <div id="roadmap-row" data-midnight="light" data-bg-mobile-hidden="" class="wpb_row vc_row-fluid vc_row full-width-section standard_section" style={{ visibility: "visible"}} data-top-percent="4%" data-bottom-percent="4%">
+                         <div class="row-bg-wrap instance-2">
+                            <div class="inner-wrap"> 
+                                <div class="row-bg" data-color_overlay="#40ceff" data-color_overlay_2="#5a2ff1" data-gradient_direction="left_to_right" data-overlay_strength="1" data-enable_gradient="true"></div>
+                            </div> 
+                        </div>
+                        <div class="nectar-shape-divider-wrap no-color" data-front="" data-style="mountains" data-position="bottom">
+                            <svg class="nectar-shape-divider" fill="" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1000 300" preserveAspectRatio="none">  
+                            <path d="M 1014 264 v 122 h -808 l -172 -86 s 310.42 -22.84 402 -79 c 106 -65 154 -61 268 -12 c 107 46 195.11 5.94 275 137 z"></path>   
+                            <path d="M -302 55 s 235.27 208.25 352 159 c 128 -54 233 -98 303 -73 c 92.68 33.1 181.28 115.19 235 108 c 104.9 -14 176.52 -173.06 267 -118 c 85.61 52.09 145 123 145 123 v 74 l -1306 10 z"></path>  
+                            <path d="M -286 255 s 214 -103 338 -129 s 203 29 384 101 c 145.57 57.91 178.7 50.79 272 0 c 79 -43 301 -224 385 -63 c 53 101.63 -62 129 -62 129 l -107 84 l -1212 12 z"></path>  
+                            <path d="M -24 69 s 299.68 301.66 413 245 c 8 -4 233 2 284 42 c 17.47 13.7 172 -132 217 -174 c 54.8 -51.15 128 -90 188 -39 c 76.12 64.7 118 99 118 99 l -12 132 l -1212 12 z"></path>  
+                            <path d="M -12 201 s 70 83 194 57 s 160.29 -36.77 274 6 c 109 41 184.82 24.36 265 -15 c 55 -27 116.5 -57.69 214 4 c 49 31 95 26 95 26 l -6 151 l -1036 10 z"></path> 
+                            </svg>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- MORE ABOUT SINGULARITY -->
+            <div class="more-about">
+                <div class="wrapper">
+                    <ul class="row">
+                        {% for item in page.section_main_callouts %}
+                        <li class="col-xs-12 col-sm-12 col-md-6 col-lg-6">
+                            <a class="blue-box" href="{% if jekyll.environment == 'production' %}{{ site.snet.baseurl }}{% endif %}{{ item.url }}">
+                                <div class="img-wrapper">
+                                    <img src="{% if jekyll.environment == 'production' %}{{ site.snet.baseurl }}{% endif %}/theme/assets/images/layout/{{ item.title }}.png" alt="Core Concepts">
+                                </div>
+                                <div class="more-about-content">
+                                    <h3>{{ item.title }}</h3>
+                                    <p>{{ item.excerpt }} </p>
+                                </div>                                
+                            </a>
+                        </li>
+                        {% endfor %}
+                    </ul>
+                </div>
+            </div>
+
+            <!-- QUICK GUIDE SECTION -->
+            <div class="quick-set-guide-container">
+                <div class="wrapper">
+                    <h3>{{ page.section_quick_setup.title }}</h3>
+                    <p>{{ page.section_quick_setup.description }}</p>  
+                    
+                    <ul class="row">
+                        {% for item in page.quick_setup_guides %}
+                        <li class="col-md-6">
+                            <img src="{% if jekyll.environment == 'production' %}{{ site.snet.baseurl }}{% endif %}/theme/assets/images/layout/{{ item.title }}.png" class="quick-set-guide-img">                            
+                            <h4>{{ item.title }}</h4>
+                            <p >{{ item.excerpt }}</p>
+                            <button class="btn">{{ item.cta }}</button>
+                        </li>
+                        {% endfor %}
+                    </ul>
+
+                    <div class="row quick-questions-container">
+                        <div class="col-md-4 pad0 text-left">
+                            <h3>{{ page.faq_forums_info.title }}</h3>
+                        </div>
+                        {% for item in page.faq_forums %}
+                        <div class="col-md-4 text-left white-callout">
+                            <h4>{{ item.title }}</h4>
+                            <p>{{ item.excerpt }}</p>
+                            <a href="#" title="Learn More" class="learn-more">{{ item.cta }}</a>
+                        </div>
+                        {% endfor %}
+                    </div>     
+                </div>
+                <!-- quick guide waves -->
+                <div class="inner">
+                    <div id="roadmap-row" data-midnight="light" data-bg-mobile-hidden="" class="wpb_row vc_row-fluid vc_row full-width-section standard_section" style={{ visibility: "visible"}} data-top-percent="4%" data-bottom-percent="4%">
+                         <div class="row-bg-wrap instance-2">
+                            <div class="inner-wrap"> 
+                                <div class="row-bg" data-color_overlay="#40ceff" data-color_overlay_2="#5a2ff1" data-gradient_direction="left_to_right" data-overlay_strength="1" data-enable_gradient="true"></div>
+                            </div> 
+                        </div>
+                        <div class="nectar-shape-divider-wrap no-color" data-front="" data-style="mountains" data-position="bottom">
+                            <svg class="nectar-shape-divider" fill="" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1000 300" preserveAspectRatio="none">  
+                            <path d="M 1014 264 v 122 h -808 l -172 -86 s 310.42 -22.84 402 -79 c 106 -65 154 -61 268 -12 c 107 46 195.11 5.94 275 137 z"></path>   
+                            <path d="M -302 55 s 235.27 208.25 352 159 c 128 -54 233 -98 303 -73 c 92.68 33.1 181.28 115.19 235 108 c 104.9 -14 176.52 -173.06 267 -118 c 85.61 52.09 145 123 145 123 v 74 l -1306 10 z"></path>  
+                            <path d="M -286 255 s 214 -103 338 -129 s 203 29 384 101 c 145.57 57.91 178.7 50.79 272 0 c 79 -43 301 -224 385 -63 c 53 101.63 -62 129 -62 129 l -107 84 l -1212 12 z"></path>  
+                            <path d="M -24 69 s 299.68 301.66 413 245 c 8 -4 233 2 284 42 c 17.47 13.7 172 -132 217 -174 c 54.8 -51.15 128 -90 188 -39 c 76.12 64.7 118 99 118 99 l -12 132 l -1212 12 z"></path>  
+                            <path d="M -12 201 s 70 83 194 57 s 160.29 -36.77 274 6 c 109 41 184.82 24.36 265 -15 c 55 -27 116.5 -57.69 214 4 c 49 31 95 26 95 26 l -6 151 l -1036 10 z"></path> 
+                            </svg>
+                        </div>
+                    </div>
+                </div>
+                <!-- quick guide waves -->
+            </div>   
+            <!-- QUICK GUIDE SECTION ENDS-->            
+
+            <!-- EVENTS SECTION -->
+            <div class="events-container">
+                <div class="wrapper text-center">
+                    <h3>{{ page.section_events.title }}</h3>
+                    <p>{{ page.section_events.description }}</p>
+                </div>
+                <div class="map-container">
+                    <div id="googleMap"></div>
+                    <div class="map-overlay"></div>
+                </div>
+            </div>
+            <!-- EVENTS SECTION ENDS -->
+
+            <!-- SOFTWARES AND NEWS SECTION -->
+            <div class="softwares-news-container">
+                <div class="row wrapper">
+                    <div class="col-md-6 software-container">
+                        <div class="inner-software">
+                            <h3>{{ page.section_softwares.title }}</h3>
+                            <p>{{ page.section_softwares.description }}</p>
+                            <ul>
+                                <li><a href="#"><i class="fab fa-html5"></i></a></li>
+                                <li><a href="#"><i class="fab fa-js"></i></a></li>
+                                <li><a href="#"><i class="fab fa-github-square"></i></a></li>
+                                <li><a href="#"><i class="fab fa-btc"></i></a></li>
+                                <li><a href="#"><i class="fab fa-aws"></i></a></li>
+                                <li><a href="#"><i class="fab fa-npm"></i></a></li>
+                                <li><a href="#"><i class="fab fa-node"></i></a></li>
+                                <li><a href="#"><i class="fab fa-viacoin"></i></a></li>								
+                            </ul>
+                        </div>
+                    </div>
+                    <div class="col-md-6 news-container">
+                        <div class="inner-news">
+                            <h3>{{ page.section_news.title }}</h3>
+                            {% for item in page.news_stories %}
+                            <h4>{{ item.title }}</h4>
+                            <img src="http://placehold.it/450x185" alt="Blank Image" class="news-img">
+                            <p>{{ item.excerpt }}</p>
+                            <a href="#" class="learn-more" title="Learn More">{{ item.cta }}</a>
+                            {% endfor %}
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-- SOFTWARES AND NEWS SECTION ENDS -->
+
+            <!-- NEWSLETTER SECTION -->
+            <div class="missing-updates-container row">
+                <div class="col-md-12 text-center">
+                    <h3>{{ page.section_newsletter.title }}</h3>
+                    <p>{{ page.section_newsletter.description }}</p>
+                    <form>
+                        <input type="text" name="subscribe">
+                        <i class="fas fa-envelope"></i>
+                    </form>
+                </div>
+            </div>            
+            <!-- NEWSLETTER SECTION ENDS -->
+
+            {% include site-footer.html %}
+        </div>                
+    </body>
 </html>
