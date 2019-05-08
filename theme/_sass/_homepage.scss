@@ -77,7 +77,7 @@ li { list-style: none; }
 
 /* HEADER */
 .header { 
-    padding: 7px 56px;
+    padding: 5px 56px;
     background: linear-gradient(90deg,#40ceff,#5a2ff1); 
     /*background-image: url('./assets/images/Singulariy_bg_pattern.png');*/
 }
@@ -96,6 +96,11 @@ nav {
 
 nav .navbar-brand{ 
     width: 175px;
+    display:block;
+    img{
+        width: 100%;
+    }
+
 }
 
 nav ul li {
