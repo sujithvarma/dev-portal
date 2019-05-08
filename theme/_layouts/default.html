@@ -1,127 +1,253 @@
 <!DOCTYPE html>
 <html>
-	<head>
-		{% include site-head.html %}
-	</head>
-	<body class="{{ site.snet.color_theme }}" data-spy="scroll" data-target=".js-scrollspy">
-		{% include site-header.html %}
-		<div class="hero-subheader">
-			<div class="container">
-				<div class="row">
-					<div class="col-md-7">
-						<div class="align-container" data-mh>
-							<div class="align-inner">
-								{% if page.title %}
-									<h1 class="hero-subheader__title">{{ page.title }}</h1>
-								{% endif %}
-								{% if page.description %}
-									<p class="hero-subheader__desc">{{ page.description }}</p>
-								{% endif %}
-								{% if page.page_nav.prev.content or page.page_nav.next.content %}
-									{% if page.page_nav.prev.content and page.page_nav.prev.url %}
-										<a href="{% if jekyll.environment == 'production' %}{{ site.snet.baseurl }}{% endif %}{{ page.page_nav.prev.url }}" class="btn btn--dark btn--rounded btn--w-icon btn--w-icon-left">
-											<i class="icon icon--arrow-left"></i>
-											{{ page.page_nav.prev.content }}
-										</a>
-									{% endif %}
-									{% if page.page_nav.next.content and page.page_nav.next.url %}
-										<a href="{% if jekyll.environment == 'production' %}{{ site.snet.baseurl }}{% endif %}{{ page.page_nav.next.url }}" class="btn btn--dark btn--rounded btn--w-icon">
-											<i class="icon icon--arrow-right"></i>
-											{{ page.page_nav.next.content }}
-										</a>
-									{% endif %}
-								{% endif %}
-							</div><!-- /.align-inner -->
-						</div><!-- /.align-container -->
-					</div><!-- /.col -->
+  <head>
+    {% include site-head.html %}
+  </head>
+  <body class="{{ site.snet.color_theme }}">
+    <div class="container-fluid">
+      <!-- HEADER -->
+      <div class="header">
+        <div class="wrapper">
+          <!-- HEADER -->
+         {% include site-header.html %}
+        </div>
+      </div>
+      <div class="header-bottom-line"></div>
+      <!-- CATEGORY HEADING -->
+      <div class="category-heading-container">
+        <div class="row wrapper">
+          <div class="col-md-6">
+            <h3>{{ page.title }}</h3>
+          </div>
+          <div class="col-md-6 text-right">
+            <div class="search-container">
+              <input type="search" name="Search">
+              <i class="fas fa-search"></i>
+            </div>
+          </div>
+        </div>
+      </div>
+      <!-- BREADCRUMS DIV -->
+      <div class="breadcrumbs-container">
+        <div class="wrapper">
+          {% capture url_tree %}
+  					{{ page.url | replace: '/', ' ' | strip }}
+					{% endcapture %}
+					{% capture url_level %}
+  					{{ url_tree | number_of_words | minus: 1 }}
+					{% endcapture %}
+					{% assign breadcrumb = url_tree | split: ' ' %}
+						<ul class="breadcrumb">
+  						<li class="breadcrumb-item">
+    						<a href="{{ site.baseurl }}">Home</a>
+  						</li>
+							{% for item in breadcrumb %}
+  						{% assign label = item | replace: '-', ' ' | capitalize %}
+  						{% assign index = forloop.length | minus: forloop.index %}
+						  {% assign page_url = page.url | split: '/' | pop: index | join: '/' %}
+  						<li class="breadcrumb-item">
+    						{% if forloop.last %}
+    							<span>{{ page.breadcrumb_label | default: label }}</span>
+						    {% else %}
+    						<a href="{{ page_url }}/">{{ label }}</a>
+    						{% endif %}
+  						</li>
+							{% endfor %}
+						</ul>
+        </div>
+      </div>
+      <!-- CATEGORY CONTENT -->
+      <div class="category-content-container">
+        <div class="row wrapper">
+          <div class="category-article-list col-md-4">
+            <ul>
+              <li>
+                <a href="#" title="Category Article One" class="active">Category Article One</a>
+              </li>
+              <li>
+                <a href="#" title="Category Article Two">Category Article Two</a>
+              </li>
+              <li>
+                <a href="#" title="Category Article Three">Category Article Three</a>
+              </li>
+              <li>
+                <a href="#" title="Category Article Four">Category Article Four</a>
+              </li>
+              <li>
+                <a href="#" title="Category Article Five">Category Article Five</a>
+              </li>
+              <li>
+                <a href="#" title="Category Article Six">Category Article Six</a>
+              </li>
+              <li>
+                <a href="#" title="Category Article Seven">Category Article Seven</a>
+              </li>
+            </ul>
 
-					{% if page.extralink.title and page.extralink.description and page.extralink.title_url %}
-						<div class="col-md-4 col-md-offset-1 hidden-xs hidden-sm">
-							<div class="align-container" data-mh>
-								<div class="align-inner">
-									<div class="hero-subheader__extralink">
-										<p class="hero-subheader__extralink-title">
-											{% if button.external_url == true %}
-											<a href="{{ page.extralink.title_url }}" class="btn btn--read-more">
-												{{ page.extralink.title }}
-												<i class="icon icon--arrow-right"></i>
-											</a>
-											{% else %}
-											<a href="{% if jekyll.environment == 'production' %}{{ site.snet.baseurl }}{% endif %}{{ page.extralink.title_url }}" class="btn btn--read-more">
-												{{ page.extralink.title }}
-												<i class="icon icon--arrow-right"></i>
-											</a>
-											{% endif %}
-										</p><!-- /.hero-subheader__extralink-title -->
-										<p>{{ page.extralink.description }}</p>
-									</div><!-- /.hero-subheader__extralink -->
-								</div><!-- /.align-inner -->
-							</div><!-- /.align-container -->
-						</div><!-- /.col -->
-					{% endif %}
-				</div><!-- /.row -->
-			</div><!-- /.container -->
-		</div><!-- /.hero-subheader -->
-		<div class="section">
-			<div class="container">
-				<div class="row">
-					<div class="col-md-7">
-						<div class="content">
-							{{ content }}
-						</div><!-- /.content -->
-					</div><!-- /.col -->
-					<div class="col-md-4 col-md-offset-1">
-						<div class="sections-list-wrapper">
-							<div class="sections-list js-sections js-affix js-scrollspy hidden-xs hidden-sm"></div><!-- /.sections-list -->
-						</div>
-					</div><!-- /.col -->
-				</div><!-- /.row -->
-			</div><!-- /.container -->
-		</div><!-- /.section -->
+            <a href='{{ site.url }}' title="Back to Categories" class="back-to-categories-link">Back to Categories</a>
+          </div>
 
-		<div class="js-footer-area">
-			{% if page.page_nav.prev.content or page.page_nav.next.content %}
-				<nav class="page-nav">
-					<div class="container">
-						<div class="row">
-							<div class="col-xs-12">
-								{% if page.page_nav.prev.content and page.page_nav.prev.url %}
-									<a href="{% if jekyll.environment == 'production' %}{{ site.snet.baseurl }}{% endif %}{{ page.page_nav.prev.url }}" class="page-nav__item page-nav__item--prev">
-										<i class="icon icon--arrow-left"></i>
-										{{ page.page_nav.prev.content }}
-									</a><!-- /.page-nav__item -->
-								{% endif %}
-								{% if page.page_nav.next.content and page.page_nav.next.url %}
-									<a href="{% if jekyll.environment == 'production' %}{{ site.snet.baseurl }}{% endif %}{{ page.page_nav.next.url }}" class="page-nav__item page-nav__item--next">
-										{{ page.page_nav.next.content }}
-										<i class="icon icon--arrow-right"></i>
-									</a><!-- /.page-nav__item -->
-								{% endif %}
-							</div><!-- /.col -->
-						</div><!-- /.row -->
-					</div><!-- /.container -->
-				</nav><!-- /.page-nav -->
-			{% endif %}
+          <div class="category-main-content col-md-8">
 
-			{% if page.dev_news == true %}
-				{% include dev-news.html %}
-			{% endif %}
+            <div class="row category-main-content-wrapper page-topic-posted-date-container">
+              <div class="col-md-6 page-title">
+                <h3>Page Topic</h3>
+              </div>
+              <div class="col-md-6 posted-date">
+                <span>posted on: 18 April, 2019</span>
+              </div>
+            </div>
 
-			{% if jekyll.environment == "production" and page.comments == true and site.snet.comments.disqus_forum_shortname %}
-				<div class="section section--grey">
-					<div class="container">
-						<div class="row">
-							<div class="col-md-7">
-								{% include comments.html %}
-							</div><!-- /.col -->
-						</div><!-- /.row -->
-					</div><!-- /.container -->
-				</div><!-- /.section -->
-			{% endif %}
-			{% if page.micro_nav == true %}
-				{% include micro-nav.html %}
-			{% endif %}
-			{% include site-footer.html %}
-		</div><!-- /.js-footer-area -->
-	</body>
+            <div class="row category-main-content-wrapper describtion-container">
+              <div class="col-md-12 page-topic-describtion">
+                <p>{{ page.description }}</p>
+              </div>
+            </div>
+
+            <hr>
+
+            <div class="row category-main-content-wrapper">
+              <div class="col-md-4 discussed-page-title">
+                <h4>Discussed on this page:</h4>
+              </div>
+              <div class="col-md-8 anchor-link-list">
+                <ul>
+                  <li>
+                    <a href="#" title="Anchor Link One">Anchor Link One,</a>
+                  </li>
+                  <li>
+                    <a href="#" title="Anchor Link Two">Anchor Link Two,</a>
+                  </li>
+                  <li>
+                    <a href="#" title="Anchor Link Three">Anchor Link Three,</a>
+                  </li>
+                  <li>
+                    <a href="#" title="Anchor Link Four">Anchor Link Four,</a>
+                  </li>
+                  <li>
+                    <a href="#" title="Anchor Link Five">Anchor Link Five,</a>
+                  </li>
+                  <li>
+                    <a href="#" title="Anchor Link Six">Anchor Link Six,</a>
+                  </li>
+                  <li>
+                    <a href="#" title="Anchor Link Seven">Anchor Link Seven</a>
+                  </li>
+                </ul>
+              </div>
+            </div>
+
+            <hr>
+
+            <div class="row category-main-content-wrapper">
+              <div class="col-md-8 left-section">
+                <div>
+                  <h4>Lorem Ipsum dolor sit amet</h4>    
+                  <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
+                  tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
+                  quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
+                  consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse
+                  cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non
+                  proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
+                  <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
+                  tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
+                  quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
+                  consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse
+                  cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non
+                  proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
+                </div>    
+                <div>
+                  <h4>Lorem Ipsum dolor sit amet</h4>    
+                  <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
+                  tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
+                  quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
+                  consequat.</p>
+                  <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
+                  tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
+                  quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
+                  consequat.</p>
+                  <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
+                  tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
+                  quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
+                  consequat.</p>
+                </div>
+                <div>
+                  <h4>Lorem Ipsum dolor sit amet</h4>    
+                  <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
+                  tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
+                  quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
+                  consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse
+                  cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non
+                  proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
+                  <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
+                  tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
+                  quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
+                  consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse
+                  cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non
+                  proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
+                </div>    
+              </div>
+              <div class="col-md-4">
+                <div class="related-links-container">
+                  <h5>Related Links</h5>
+                  <ul>
+                    <li>
+                      <a href="#" title="Related Link One">Related Link One</a>
+                    </li>
+                    <li>
+                      <a href="#" title="Related Link Two">Related Link Two</a>
+                    </li>
+                    <li>
+                      <a href="#" title="Related Link Three">Related Link Three</a>
+                    </li>
+                    <li>
+                      <a href="#" title="Related Link Four">Related Link Four</a>
+                    </li>
+                    <li>
+                      <a href="#" title="Related Link Five">Related Link Five</a>
+                    </li>
+                  </ul>
+                </div>
+                <div class="general-links-container">
+                  <h5>General Links</h5>
+                  <ul>
+                    <li>
+                      <a href="#" title="F.A.Q">F.A.Q</a>
+                    </li>
+                    <li>
+                      <a href="#" title="Community">Community</a>
+                    </li>
+                    <li>
+                      <a href="#" title="Common Errors">Common Errors</a>
+                    </li>
+                    <li>
+                      <a href="#" title="Softwares">Softwares</a>
+                    </li>
+                    <li>
+                      <a href="#" title="Feedback">Feedback</a>
+                    </li>
+                  </ul>
+                </div>
+              </div>
+            </div>
+
+            <div class="row">
+              <div class="col-md-8 category-content-btns">
+                <button>Previous Article</button>
+                <button>Next Article</button>
+              </div>
+            </div>
+
+            <div class="col-md-4"></div>
+
+          </div>
+        </div>
+      </div>
+      <!-- FOOTER STARTS -->
+      {% include site-footer.html %}
+      <!-- FOOTER ENDS
+       -->
+
+    </div>
+  </body>
 </html>
