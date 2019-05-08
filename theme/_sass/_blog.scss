@@ -902,6 +902,13 @@ pre {
             margin-top: 0!important;
         }
     }
+    h3{
+        font-size:14px;
+        font-weight: bold;   
+        &+hr{
+            display: none;
+        }        
+    }
     p{
         margin: 0 0 20px 0!important;
     }
