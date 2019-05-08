@@ -241,6 +241,9 @@ nav ul li a:hover {
     letter-spacing: -.5px;    
 }
 .quick-set-guide-container h3 + p {
+    width: 80%;
+    text-align: center;
+    margin: 0 auto;
     margin-top: 10px;
     margin-bottom: 40px;
     color: #fff;
@@ -322,7 +325,10 @@ nav ul li a:hover {
 .quick-set-guide-container .nectar-shape-divider { bottom: -200px; }
 
 /* EVENTS */
-.events-container { padding: 55px 0; }
+.events-container { 
+    padding: 55px 0; 
+    padding-top: 0!important;
+}
 .events-container h3 { 
     margin-bottom: 8px; 
     color: #223343;
@@ -332,6 +338,9 @@ nav ul li a:hover {
     letter-spacing: -.5px;    
 }
 .events-container h3 + p { 
+    width: 80%;
+    margin: 0 auto;
+    text-align: center;
     margin-bottom: 40px;
     color: #444;
     font-weight: 400;
@@ -347,8 +356,14 @@ nav ul li a:hover {
     background-color: #eee;
     margin-top: 40px;
 }
-
+.softwares-news-container{
+    padding: 55px 0; 
+}
 /* SOFTWARES AND NEWS */
+.software-container{
+    border: none!important;
+    border-bottom: solid 1px #f1f1f1!important;
+}
 .software-container h3{
     margin-bottom: 8px;
     color: #223343;
@@ -359,13 +374,15 @@ nav ul li a:hover {
 }
 
 .software-container p{
+    width: 80%;
+    text-align: center;
+    margin: 0 auto;
     margin-bottom: 40px;
     color: #444;
     font-weight: 400;
     font-size: 16px;
     line-height: 21px;    
 }
-
 .software-container ul{
     padding: 0;
     margin:0;
@@ -373,7 +390,8 @@ nav ul li a:hover {
 }
 
 .software-container ul li{
-    width: 24.1%;
+    width: 24%;
+    text-align: center;
     display: inline-block;
     margin-bottom: 70px;
 }
@@ -389,7 +407,6 @@ nav ul li a:hover {
     animation-duration: .2s;       
 }
 
-.software-container { border-right: 1px dotted #ccc; }
 
 .news-container h4{
     font-size: 16px;
@@ -426,7 +443,10 @@ nav ul li a:hover {
 .inner-news { padding-left: 15px; }
 
 /* MISSING UPDATES */
-.missing-updates-container { margin : 70px 0; }
+.missing-updates-container { 
+    margin : 40px 0; 
+    margin-top: 0;    
+}
 
 .missing-updates-container h3 { 
     margin-bottom: 20px; 
@@ -438,9 +458,9 @@ nav ul li a:hover {
 }
 
 .missing-updates-container p {
-
-
-
+    width: 80%;
+    margin: 0 auto;
+    text-align: center;
     margin-bottom: 40px;
     color: #444;
     font-weight: 400;
