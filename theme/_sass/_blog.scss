@@ -708,13 +708,15 @@ input[type="search"]::-webkit-search-results-decoration {
     margin-top: 80px;
 }
 
-.category-article-list li a {
-    width: 100%;
-    padding: 16px 35px;
-    display: inline-block;
-    color: #2D4057;
-    font-size: 18px;
-    font-weight: 600;
+.category-article-list li {
+    a{
+        width: 100%;
+        padding: 16px 35px;
+        display: inline-block;
+        color: #2D4057;
+        font-size: 14px;
+        font-weight: 600;        
+    }
 }
 
 .category-article-list li a.active {
@@ -734,7 +736,9 @@ input[type="search"]::-webkit-search-results-decoration {
 }
 
 .page-topic-posted-date-container { margin: 0 auto !important; }
-.describtion-container { margin: 0 auto 30px !important; }
+.describtion-container { 
+    margin: 0 auto 20px !important; 
+}
 
 .category-main-content {
     padding: 40px 0;
@@ -751,10 +755,14 @@ input[type="search"]::-webkit-search-results-decoration {
 
 .page-title h3 { font-weight: 600; }
 
-.page-topic-describtion p {
-    margin: 25px 0 0;
-    font-size: 17px;
-    font-weight: 600;
+.page-topic-describtion{
+    p{
+        margin: 25px 0 0;
+        font-size: 16px;
+        line-height: 23px;
+        font-weight: 400; 
+        color: #444;
+    }
 }
 
 .posted-date {
@@ -794,6 +802,7 @@ hr {
 .related-links-container ul li a,
 .general-links-container ul li a {
     padding: 5px 10px;
+    font-size: 14px;
     display: inline-block;
     color: #364960;
     font-weight: 600;
@@ -828,7 +837,7 @@ Newly Added
 
 /*to highlight code*/
 pre.highlight {
-    background: #212733;
+    background: #364960;
     color: #f8f8f2;
     padding: 1.5625rem;
 }
