@@ -824,3 +824,21 @@ hr {
   outline: none;
   font-weight: 700;
 }
+
+
+pre.highlight {
+    background: #212733;
+    color: #f8f8f2;
+    padding: 1.5625rem;
+}
+pre {
+    overflow: auto;
+    border-left: 8px solid #3c4654;
+    margin: 0 0 1.25rem 0;
+    -webkit-overflow-scrolling: touch;
+    font-size: 0.9rem;
+}
+pre {
+    font-family: monospace, monospace;
+    font-size: 1em;
+}
