@@ -847,10 +847,11 @@ pre {
     margin: 0 0 1.25rem 0;
     -webkit-overflow-scrolling: touch;
     font-size: 0.9rem;
-}
-pre {
     font-family: monospace, monospace;
     font-size: 1em;
+    code{
+        font-size: 13px;        
+    }
 }
 
 /*discussed on this page link*/
