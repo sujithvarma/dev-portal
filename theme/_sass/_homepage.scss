@@ -36,6 +36,19 @@ body {
         transform: rotate(0deg);
     }
 }
+@keyframes wave-animation {
+    0% {  
+        transform: translate3d(0,-5px,0);
+    }
+
+    50% {  
+        transform: translate3d(3px,5px,0);
+    }
+    100% {  
+        transform: translate3d(0,-5px,0);
+    }
+}
+
 .uppercase-word { text-transform: uppercase; }
 
 ul { 
@@ -593,16 +606,48 @@ nav ul li a:hover {
     transform: scale(1.03);
 }
 
-.nectar-shape-divider-wrap[data-style="waves_opacity"] svg path:first-child { opacity: 0.6; }
+.nectar-shape-divider-wrap[data-style="waves_opacity"] svg path:first-child { 
+    opacity: 0.6;     
+}
 
-.nectar-shape-divider-wrap[data-style="fan"] svg { width: 102%; left: -1%; }
-.nectar-shape-divider-wrap[data-style="fan"] svg polygon:nth-child(2) { opacity: 0.15; }
+.nectar-shape-divider-wrap[data-style="fan"] svg { 
+    width: 102%; left: -1%; 
+}
+.nectar-shape-divider-wrap[data-style="fan"] svg polygon:nth-child(2) { 
+    opacity: 0.15; 
+}
 .nectar-shape-divider-wrap[data-style="fan"] svg rect { opacity: 0.3; }
 
-.nectar-shape-divider-wrap[data-style="mountains"] svg path:first-child { opacity: 0.1; }
-.nectar-shape-divider-wrap[data-style="mountains"] svg path:nth-child(2) { opacity: 0.12; }
-.nectar-shape-divider-wrap[data-style="mountains"] svg path:nth-child(3) { opacity: 0.18; }
-.nectar-shape-divider-wrap[data-style="mountains"] svg path:nth-child(4) { opacity: 0.33; }
+/* Added animation for the waves*/
+.nectar-shape-divider-wrap[data-style="mountains"] svg path:first-child { 
+    opacity: 0.1;                                                                         
+    animation-name: wave-animation;                                                                        
+    animation-duration: 3s;                                                                            
+    animation-iteration-count: infinite;
+}
+.nectar-shape-divider-wrap[data-style="mountains"] svg path:nth-child(2) { 
+    opacity: 0.12; 
+    animation-name: wave-animation;
+    animation-duration: 3.5s;         
+    animation-iteration-count: infinite;
+}
+.nectar-shape-divider-wrap[data-style="mountains"] svg path:nth-child(3) { 
+    opacity: 0.18; 
+    animation-name: wave-animation;
+    animation-duration: 4.5s;                                                                             
+    animation-iteration-count: infinite;
+}
+.nectar-shape-divider-wrap[data-style="mountains"] svg path:nth-child(4) { 
+    opacity: 0.33; 
+    animation-name: wave-animation;
+    animation-duration: 6s;                                                                              
+    animation-iteration-count: infinite;
+}
+.nectar-shape-divider-wrap[data-style="mountains"] svg path:nth-child(5) { 
+    animation-name: wave-animation;
+    animation-duration: 5s;                                                                             
+    animation-iteration-count: infinite;
+}
 
 .nectar-shape-divider-wrap[data-style="curve_opacity"] svg path:nth-child(1),
 .nectar-shape-divider-wrap[data-style="waves_opacity_alt"] svg path:nth-child(1) { opacity: 0.15; }
