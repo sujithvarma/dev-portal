@@ -9,12 +9,12 @@
                 <div class="wrapper">
                     {% include site-header.html %}
                     <div class="row">
-                        <div class="col-xs-12 col-sm-12 col-md-5">
+                        <div class="col-xs-12 col-sm-12 col-md-6 col-ld-5">
                             <div class="img-wrapper">
                                 <img src="{% if jekyll.environment == 'production' %}{{ site.snet.baseurl }}{% endif %}/theme/assets/images/layout/{{ page.title }}.png" alt="{{ page.title }}">                    
                             </div>
                         </div>
-                        <div class="col-xs-12 col-sm-12 col-md-7  banner-content">
+                        <div class="col-xs-12 col-sm-12 col-md-6 col-lg-7  banner-content">
                             <h2>{{ page.title }}</h2>                
                             <p>{{ page.description }}</p>
                             <button class="btn">{{ page.cta }}</button>

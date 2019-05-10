@@ -191,7 +191,7 @@ nav ul li a:hover {
 
 .banner .img-wrapper{
     width: 350px;
-    margin-top: 20px;
+    margin: 20px auto 0;
 }
 .banner img{ width: 100%; }
 
@@ -760,4 +760,11 @@ nav ul li a:hover {
 @media only screen and (max-width: 768px) {
   .desktop-header { display: none; }
   .hamburger-menu { display: block; }
+}
+
+@media only screen and (max-width: 400px) {
+  .banner .img-wrapper { 
+    width: 100%;
+    margin-top: 100px;
+  }
 }
