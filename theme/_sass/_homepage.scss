@@ -228,64 +228,57 @@ nav ul li a:hover {
 
 /* MORE ABOUT */
 .more-about { 
-    padding: 55px 0; 
-    margin-top: -150px;
+  padding: 55px 0; 
+  margin-top: -150px;
 }
 
 .more-about .blue-box {
-    float: left;
-    max-width: 490px;
-    box-shadow: 1px 1px 20px rgba(85,52,101,.15);
-    background-color: #ACDDFD;
-    display: block!important;   
-    border-radius: 8px;
-    box-sizing: border-box;
-    padding: 20px;
-    overflow: hidden;
-    height: 160px;
+  height: 100%;
+  padding: 20px;
+  border-radius: 8px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  background-color: #ACDDFD;
+  box-shadow: 1px 1px 20px rgba(85,52,101,.15);
 }
-.more-about .blue-box.last {
-    float: right;
-}
+
 .more-about .blue-box:hover{   
-    background-color: #7866E5;
-    animation-name: button-animation;
-    animation-duration: .2s;    
-    box-shadow: 1px 1px 10px rgba(85,52,101,.50);    
+  animation-name: button-animation;
+  animation-duration: .2s;
+  background-color: #7866E5;
+  box-shadow: 1px 1px 10px rgba(85,52,101,.50);
+  text-decoration: none;
 }
+
 .more-about .blue-box:hover .more-about-content h3,
-.more-about .blue-box:hover .more-about-content p{
-    color: #fff;    
+.more-about .blue-box:hover .more-about-content p {
+  color: #fff;    
 }
-.blue-box .img-wrapper{
-    width: 25%;
-    float: left;
+
+.blue-box .img-wrapper { width: 25%; }
+
+.more-about .blue-box:hover .img-wrapper img { 
+  animation-name: rotate-animation;
+  animation-duration: .2s;
 }
-.more-about .blue-box:hover .img-wrapper img{  
-    animation-name: rotate-animation;
-    animation-duration: .2s;     
-}
+
 .blue-box img { width: 100%; }
+.more-about-content { width: 69%; }
 
-/*.more-about li:first-of-type { margin-right: 150px; }*/
-
-.more-about-content { 
-    margin-left: 25px; 
-    width: 69%;
-    float: left;    
-}
 .more-about-content h3 {
-    font-weight: 600;
-    font-size: 20px;
-    color: #253951;
-    margin-bottom: 15px; 
-    letter-spacing: -.5px;
+  margin-bottom: 15px; 
+  color: #253951;
+  font-size: 20px;
+  font-weight: 600;
+  letter-spacing: -.5px;
 }
+
 .more-about-content p { 
-    font-size: 13px; 
-    color: #444;
-    line-height: 20px;
-    margin-bottom: 0;
+  margin-bottom: 0;
+  color: #444;
+  font-size: 13px; 
+  line-height: 20px;
 }
 
 /* QUICK SETUP GUIDE */
@@ -760,6 +753,7 @@ nav ul li a:hover {
 @media only screen and (max-width: 768px) {
   .desktop-header { display: none; }
   .hamburger-menu { display: block; }
+  .more-about ul li:last-of-type { margin-top: 25px; }
 }
 
 @media only screen and (max-width: 400px) {
