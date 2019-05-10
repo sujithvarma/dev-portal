@@ -540,9 +540,8 @@ nav ul li a:hover {
 
 /* FOOTER */
 .footer { background-color: #223343; }
-.footer .logo{
-    width: 15%;
-}
+.footer a { display: inline-block; }
+.footer .logo { width: 185px; }
 
 .footer-wrapper {
     width: 90%;
@@ -752,6 +751,13 @@ nav ul li a:hover {
   .more-about ul li:last-of-type { margin-top: 25px; }
   .quick-set-guide-container ul li:last-of-type { margin-top: 50px; }
   .quick-questions-container .white-callout { margin-top: 25px; }
+}
+
+@media only screen and (max-width: 576px){
+  .footer ul { 
+    margin-top: 30px;
+    text-align: center; 
+  }
 }
 
 @media only screen and (max-width: 500px) {
