@@ -1,25 +1,47 @@
 <!-- HEADER -->
 {% if site.snet.header.logo.text or site.snet.header.logo.image or site.snet.header.nav %}        
-<nav class="navbar navbar-expand-sm">
-    {% if site.snet.header.logo.text %}
-    <a href="{% if jekyll.environment == 'production' %}{{ site.snet.baseurl }}{% endif %}/" class="navbar-brand">{{ site.snet.header.logo.text }}</a>            
-    {% elsif site.snet.header.logo.image %}
-    <a class="navbar-brand" href="#" title="SingularityNET">  
-        <img src="{% if jekyll.environment == 'production' %}{{ site.snet.baseurl }}{% endif %}/theme/assets/images/layout/logo.png" class="logo">                            
-    </a>    
-    {% endif %}            
+<nav class="navbar navbar-expand-sm row">
+    <div class="col-xs-6 col-sm-6 col-md-3">
+        {% if site.snet.header.logo.text %}
+        <a href="{% if jekyll.environment == 'production' %}{{ site.snet.baseurl }}{% endif %}/" class="navbar-brand">{{ site.snet.header.logo.text }}</a>            
+        {% elsif site.snet.header.logo.image %}
+        <a class="navbar-brand" href="#" title="SingularityNET">  
+            <img src="{% if jekyll.environment == 'production' %}{{ site.snet.baseurl }}{% endif %}/theme/assets/images/layout/logo.png" class="logo">                            
+        </a>    
+        {% endif %}            
+    </div>
     <!-- Links -->
 
-    {% if site.snet.header.nav %}
-    <ul class="navbar-nav ml-auto">
-        {% for item in site.snet.header.nav %}
-        <li class="nav-item">
-            <a class="nav-link" href="{{ item.item_url }}" title="{{ item.item_name }}">{{ item.item_name }}</a>
-        </li>
-        {% endfor %}
-    </ul><!-- /.site-header__nav -->
+    <div class="col-xs-6 col-sm-6 col-md-9">
+        {% if site.snet.header.nav %}
+        <div class="desktop-header">
+            <ul class="navbar-nav ml-auto">
+            {% for item in site.snet.header.nav %}
+                <li class="nav-item">
+                    <a class="nav-link" href="{{ item.item_url }}" title="{{ item.item_name }}">{{ item.item_name }}</a>
+                </li>
+            {% endfor %}
+            </ul><!-- /.site-header__nav -->
+        </div>
+        {% endif %}
 
-    {% endif %}
+        {% if site.snet.header.nav %}
+        <div class="hamburger-menu">
+            <button class="bars" onclick="showMenuItems()">
+              <span></span>
+              <span></span>
+              <span></span>
+            </button>
+            <ul class="navbar-nav ml-auto hamburger-menu-items">
+            {% for item in site.snet.header.nav %}
+                <li class="nav-item">
+                    <a class="nav-link" href="{{ item.item_url }}" title="{{ item.item_name }}">{{ item.item_name }}</a>
+                </li>
+            {% endfor %}
+            </ul><!-- /.site-header__nav -->
+        </div>
+        {% endif %}
+    </div>
 </nav>
 {% endif %}
 
@@ -112,6 +134,11 @@
         'Publisher Purpose IDs': [1, 2, 3, 4, 5],
         'No Option': false,
     });
+
+    function showMenuItems(e){
+      let items = document.querySelector('.hamburger-menu-items');
+      items.classList.toggle('active');
+    }
 </script>
 <!-- End Quantcast Choice. Consent Manager Tag -->
 <style>

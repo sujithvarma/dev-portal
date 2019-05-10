@@ -102,10 +102,17 @@ header h1{
     width: 150px;
 }
 
-nav { 
+nav {
     display: flex;
     align-items: center;
 }
+
+.navbar { 
+  padding: 10px 0 !important; 
+  flex-wrap: nowrap;
+}
+
+.navbar-nav { justify-content: flex-end; }
 
 nav .navbar-brand{ 
     width: 175px;
@@ -113,7 +120,6 @@ nav .navbar-brand{
     img{
         width: 100%;
     }
-
 }
 
 nav ul li {
@@ -135,6 +141,45 @@ nav ul li a:hover {
     background-color: #7866E5;    
     animation-duration: .2s;      
 }
+
+/* Hamburger stying */
+.hamburger-menu { 
+  display: none;
+  position: relative;
+  text-align: right;
+  outline: none;
+}
+
+.bars {
+  padding: 5px 10px;
+  border: none;
+  outline: none;
+  background-color: transparent;
+}
+
+.bars span {
+  width: 15px;
+  height: 3px;
+  margin-bottom: 3px;
+  display: block;
+  background-color: #fff;
+}
+
+.bars span:last-of-type { margin-bottom: 0; }
+
+.hamburger-menu ul {
+  position: absolute;
+  top: 35px;
+  right: 0;
+  display: flex;
+  flex-direction: column !important;
+}
+
+.hamburger-menu ul li a { padding: 0 10px !important; }
+
+.hamburger-menu ul.hamburger-menu-items { visibility: hidden; }
+.hamburger-menu ul.hamburger-menu-items.active { visibility: visible;}
+
 /* BANNER */
 .banner {
     padding: 5px 0 170px 0;
@@ -696,4 +741,23 @@ nav ul li a:hover {
 
 @media only screen and (min-width: 1000px) {
     .nectar-shape-divider-wrap[data-style="clouds"] .nectar-shape-divider { min-width: 1700px; }
+}
+
+// RESPONSIVE STYLING
+@media only screen and (max-width: 1100px) {
+  .wrapper { width: 90%; }
+  .nav-item { margin-left: 0; }
+}
+
+@media only screen and (max-width: 940px) { 
+  nav ul li a { padding: 10px !important; }
+}
+
+@media only screen and (max-width: 814px) {
+  nav ul li a { font-size: 14px; }
+}
+
+@media only screen and (max-width: 768px) {
+  .desktop-header { display: none; }
+  .hamburger-menu { display: block; }
 }
