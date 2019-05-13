@@ -175,10 +175,8 @@ nav ul li a:hover {
     display: flex;
     flex-direction: column !important;
     z-index: 10001;   
-    background: #fff!important;  
     padding: 10px;    
-    border-radius: 4px;
-    box-shadow: 1px 1px 10px rgba(85,52,101,.50);       
+    border-radius: 4px;   
 }
 .hamburger-menu ul li a { padding: 0 10px !important;     z-index: 10001; }
 
@@ -186,6 +184,8 @@ nav ul li a:hover {
 .hamburger-menu ul.hamburger-menu-items.active { visibility: visible;}
 .hamburger-menu.inside-page{
     ul.hamburger-menu-items{
+        background: #fff!important;  
+        box-shadow: 1px 1px 10px rgba(85,52,101,.50);            
         li a{
             color: #5a2ff1!important;   
         }
