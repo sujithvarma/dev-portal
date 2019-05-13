@@ -8,7 +8,7 @@
         <a class="navbar-brand" href="#" title="SingularityNET">  
             <img src="{% if jekyll.environment == 'production' %}{{ site.snet.baseurl }}{% endif %}/theme/assets/images/layout/logo.png" class="logo">                            
         </a>    
-        {% endif %}            
+        {% endif %}     
     </div>
     <!-- Links -->
 
@@ -16,11 +16,15 @@
         {% if site.snet.header.nav %}
         <div class="desktop-header">
             <ul class="navbar-nav ml-auto">
-            {% for item in site.snet.header.nav %}
+                {% for item in site.snet.header.nav %}
                 <li class="nav-item">
+                    {% if item.item_external_url %}
+                    <a class="nav-link" target="_blank" href="{{ item.item_external_url }}" title="{{ item.item_name }}">{{ item.item_name }}</a>
+                    {% else %}
                     <a class="nav-link" href="{{ item.item_url }}" title="{{ item.item_name }}">{{ item.item_name }}</a>
+                    {% endif %}
                 </li>
-            {% endfor %}
+                {% endfor %}
             </ul><!-- /.site-header__nav -->
         </div>
         {% endif %}
@@ -28,16 +32,16 @@
         {% if site.snet.header.nav %}
         <div class="hamburger-menu">
             <button class="bars" onclick="showMenuItems()">
-              <span></span>
-              <span></span>
-              <span></span>
+                <span></span>
+                <span></span>
+                <span></span>
             </button>
             <ul class="navbar-nav ml-auto hamburger-menu-items">
-            {% for item in site.snet.header.nav %}
+                {% for item in site.snet.header.nav %}
                 <li class="nav-item">
                     <a class="nav-link" href="{{ item.item_url }}" title="{{ item.item_name }}">{{ item.item_name }}</a>
                 </li>
-            {% endfor %}
+                {% endfor %}
             </ul><!-- /.site-header__nav -->
         </div>
         {% endif %}

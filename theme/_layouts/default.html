@@ -61,29 +61,40 @@
                 <div class="row wrapper">
                     <div class="category-article-list col-xs-12 col-sm-3 col-md-3 col-lg-3">
                         <ul>
-                            <li>
-                                <a href="#" title="Category Article One" class="active">Category Article One</a>
-                            </li>
-                            <li>
-                                <a href="#" title="Category Article Two">Category Article Two</a>
-                            </li>
-                            <li>
-                                <a href="#" title="Category Article Three">Category Article Three</a>
-                            </li>
-                            <li>
-                                <a href="#" title="Category Article Four">Category Article Four</a>
-                            </li>
-                            <li>
-                                <a href="#" title="Category Article Five">Category Article Five</a>
-                            </li>
-                            <li>
-                                <a href="#" title="Category Article Six">Category Article Six</a>
-                            </li>
-                            <li>
-                                <a href="#" title="Category Article Seven">Category Article Seven</a>
-                            </li>
+                            {% assign path_crumbs = page.path | split: "/" %}                          
+                                {% case path_crumbs[0] %}
+                                    {% when 'docs' %}
+                                        {% case path_crumbs[1] %}
+                                            {% when 'concepts' %}
+                                                {% assign nav_tree = site.data.navigation.concepts %}
+                                            {% when 'provider.md' %}
+                                                {% assign nav_tree = site.data.navigation.provider %}
+                                            {% when 'buyer.md' %}
+                                                {% assign nav_tree = site.data.navigation.buyer %}
+                                            {% else %}
+                                                {% assign nav_tree = site.data.navigation.docs %}                                      
+                                        {% endcase %}            
+                                    {% when 'tutorials' %}
+                                        {% assign nav_tree = site.data.navigation.tutorials %}
+                                    {% when 'contribute' %}
+                                        {% assign nav_tree = site.data.navigation.contribute %}                                        
+                                    {% else %}
+                                         {% assign nav_tree = nil %}
+                                    {% endcase %}  
+                                       <!-- <li class="list-inline">
+                                            <a href="{{ path_crumbs[0] }}">{{ path_crumbs[0] }}</a>
+                                        </li> 
+                                        <li class="list-inline">
+                                            <a href="{{ nav_tree }}">{{ nav_tree }}</a>
+                                        </li>                                    -->
+                                {%if nav_tree %}                                                                           
+                                    {% for menu in nav_tree %}
+                                        <li class="list-inline">
+                                            <a href="{{ menu[1].url }}">{{ menu[1].title }}</a>
+                                        </li>
+                                    {% endfor %}
+                            {% endif %}
                         </ul>
-
                         <a href='{{ site.url }}' title="Back to Categories" class="back-to-categories-link">Back to Categories</a>
                     </div>
 
