@@ -1,3 +1,17 @@
+docs:
+  concepts:
+    title: Core Concepts
+    url: "/docs/concepts"
+  tutorials:
+    title: Tutorials
+    url: "/tutorials"
+  provider:
+    title: AI Developer
+    url: "/docs/provider"
+  buyer:
+    title: AI Consumer
+    url: "/docs/buyer"    
+
 concepts:
   marketplace:
     title: "SingularityNet Marketplace"
