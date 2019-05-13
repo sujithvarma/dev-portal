@@ -30,7 +30,7 @@
         {% endif %}
 
         {% if site.snet.header.nav %}
-        <div class="hamburger-menu">
+        <div class="hamburger-menu {% if page.title != "Developer Portal" %} inside-page {% endif %}">
             <button class="bars" onclick="showMenuItems()">
                 <span></span>
                 <span></span>
