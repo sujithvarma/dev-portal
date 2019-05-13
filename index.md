@@ -45,12 +45,12 @@ faq_forums_info:
 
 # FAQ and Forums
 faq_forums:
-    - title: F.A.Q
-      excerpt: Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
+    - title: Telegram
+      excerpt: Join our Telegram channel to reach out to the community
       url: '/docs/concepts'
       cta: Learn More
     - title: Forums
-      excerpt: Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua
+      excerpt: Join our brand new discussion platform for any questions that you have
       cta: Learn More
       url: '/docs/setup'  
       
@@ -59,10 +59,10 @@ section_events:
     title: Events
     description: Planning to attend any of our global events. Lorem ipsum dolor sit amet,consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua
     
-# Softwares
+# Downloads
 section_softwares:
-    title: Softwares
-    description: Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation.    
+    title: Downloads
+    description: Download the different components of our platform
     
 # News
 section_news:
