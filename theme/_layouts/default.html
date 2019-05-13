@@ -99,7 +99,18 @@
                             </li>
                             {% endfor %}
                             {% endif %}
-                        </ul>
+                        </ul>   
+
+                        <div class="dropdown show">
+                            <a class="dropdown-toggle dropdown-button" href="#" role="button" id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                Category Navigation
+                            </a>
+                            <div class="dropdown-menu" aria-labelledby="dropdownMenuLink">
+                                {% for menu in nav_tree %}
+                                <a class="dropdown-item" href="{{ menu[1].url }}">{{ menu[1].title }}</a>
+                                {% endfor %}  
+                            </div>
+                        </div>                        
                         <a href='{{ site.url }}' title="Back to Categories" class="back-to-categories-link">Back to Categories</a>
                     </div>
 
