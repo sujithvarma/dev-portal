@@ -322,7 +322,9 @@ hr{
         margin-bottom: 20px;
     }
 }
-
+.dropdown-button{
+    display: none;
+}
 // MEDIA QUERIES
 @media only screen and (max-width: 1100px) {
     .header { padding: 5px 0; }
