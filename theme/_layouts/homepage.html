@@ -68,7 +68,7 @@
                 <div class="wrapper">
                     <h3>{{ page.section_quick_setup.title }}</h3>
                     <p>{{ page.section_quick_setup.description }}</p>  
-                    
+
                     <ul class="row">
                         {% for item in page.quick_setup_guides %}
                         <li class="col-md-6">
@@ -116,7 +116,46 @@
                 </div>
                 <!-- quick guide waves -->
             </div>   
-            <!-- QUICK GUIDE SECTION ENDS-->            
+            <!-- QUICK GUIDE SECTION ENDS-->   
+
+
+            <!-- SOFTWARES AND NEWS SECTION -->
+            <div class="softwares-news-container">
+                <div class="row wrapper">
+                    <div class="col-md-12 software-container">
+                        <div class="wrapper text-center">
+                            <h3>{{ page.section_softwares.title }}</h3>
+                            <p>{{ page.section_softwares.description }}</p>
+                        </div>                        
+                        <div class="inner-software">
+                            <ul>
+                                <li><a href="#"><i class="fab fa-html5"></i></a></li>
+                                <li><a href="#"><i class="fab fa-js"></i></a></li>
+                                <li><a href="#"><i class="fab fa-github-square"></i></a></li>
+                                <li><a href="#"><i class="fab fa-btc"></i></a></li>
+                                <li><a href="#"><i class="fab fa-aws"></i></a></li>
+                                <li><a href="#"><i class="fab fa-npm"></i></a></li>
+                                <li><a href="#"><i class="fab fa-node"></i></a></li>
+                                <li><a href="#"><i class="fab fa-viacoin"></i></a></li>								
+                            </ul>
+                        </div>
+                    </div>
+                    <!--
+                    <div class="col-md-6 news-container">
+                        <div class="inner-news">
+                            <h3>{{ page.section_news.title }}</h3>
+                            {% for item in page.news_stories %}
+                            <h4>{{ item.title }}</h4>
+                            <img src="http://placehold.it/450x185" alt="Blank Image" class="news-img">
+                            <p>{{ item.excerpt }}</p>
+                            <a href="#" class="learn-more" title="Learn More">{{ item.cta }}</a>
+                            {% endfor %}
+                        </div>
+                    </div>
+                    -->
+                </div>
+            </div>
+            <!-- SOFTWARES AND NEWS SECTION ENDS -->            
 
             <!-- EVENTS SECTION -->
             <div class="events-container">
@@ -131,49 +170,19 @@
             </div>
             <!-- EVENTS SECTION ENDS -->
 
-            <!-- SOFTWARES AND NEWS SECTION -->
-            <div class="softwares-news-container">
-                <div class="row wrapper">
-                    <div class="col-md-6 software-container">
-                        <div class="inner-software">
-                            <h3>{{ page.section_softwares.title }}</h3>
-                            <p>{{ page.section_softwares.description }}</p>
-                            <ul>
-                                <li><a href="#"><i class="fab fa-html5"></i></a></li>
-                                <li><a href="#"><i class="fab fa-js"></i></a></li>
-                                <li><a href="#"><i class="fab fa-github-square"></i></a></li>
-                                <li><a href="#"><i class="fab fa-btc"></i></a></li>
-                                <li><a href="#"><i class="fab fa-aws"></i></a></li>
-                                <li><a href="#"><i class="fab fa-npm"></i></a></li>
-                                <li><a href="#"><i class="fab fa-node"></i></a></li>
-                                <li><a href="#"><i class="fab fa-viacoin"></i></a></li>								
-                            </ul>
-                        </div>
-                    </div>
-                    <div class="col-md-6 news-container">
-                        <div class="inner-news">
-                            <h3>{{ page.section_news.title }}</h3>
-                            {% for item in page.news_stories %}
-                            <h4>{{ item.title }}</h4>
-                            <img src="http://placehold.it/450x185" alt="Blank Image" class="news-img">
-                            <p>{{ item.excerpt }}</p>
-                            <a href="#" class="learn-more" title="Learn More">{{ item.cta }}</a>
-                            {% endfor %}
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <!-- SOFTWARES AND NEWS SECTION ENDS -->
+
 
             <!-- NEWSLETTER SECTION -->
-            <div class="missing-updates-container row">
-                <div class="col-md-12 text-center">
-                    <h3>{{ page.section_newsletter.title }}</h3>
-                    <p>{{ page.section_newsletter.description }}</p>
-                    <form>
-                        <input type="text" name="subscribe">
-                        <i class="fas fa-envelope"></i>
-                    </form>
+            <div class="missing-updates-container ">
+                <div class="row wrapper">
+                    <div class="col-md-12 text-center">
+                        <h3>{{ page.section_newsletter.title }}</h3>
+                        <p>{{ page.section_newsletter.description }}</p>
+                        <form>
+                            <input type="text" name="subscribe">
+                            <i class="fas fa-envelope"></i>
+                        </form>
+                    </div>
                 </div>
             </div>            
             <!-- NEWSLETTER SECTION ENDS -->
