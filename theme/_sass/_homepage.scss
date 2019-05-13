@@ -517,7 +517,8 @@ nav ul li a:hover {
                     margin: 0 auto;
                     filter: gray; /* IE6-9 */
                     -webkit-filter: grayscale(1); /* Google Chrome, Safari 6+ & Opera 15+ */
-                    filter: grayscale(1); /* Microsoft Edge and Firefox 35+ */                    
+                    filter: grayscale(1); /* Microsoft Edge and Firefox 35+ */      
+                    opacity: .5;
                 }
                 color: #563DEA;
                 font-weight: 700;
@@ -529,7 +530,8 @@ nav ul li a:hover {
                         animation-name: rotate-animation;
                         animation-duration: .2s; 
                         -webkit-filter: grayscale(0);
-                        filter: none;                        
+                        filter: none;     
+                        opacity: 1;                        
                     }
                     color: #FD894D;
                 }
