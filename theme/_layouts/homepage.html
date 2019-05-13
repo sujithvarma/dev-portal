@@ -23,7 +23,7 @@
                 </div>
                 <!-- waves -->
                 <div class="inner">
-                    <div id="roadmap-row" data-midnight="light" data-bg-mobile-hidden="" class="wpb_row vc_row-fluid vc_row full-width-section standard_section" style={{ visibility: "visible"}} data-top-percent="4%" data-bottom-percent="4%">
+                    <div id="roadmap-row" data-midnight="light" data-bg-mobile-hidden="" class="wpb_row vc_row-fluid vc_row full-width-section standard_section" style={{ visibility : "visible"}} data-top-percent="4%" data-bottom-percent="4%">
                          <div class="row-bg-wrap instance-2">
                             <div class="inner-wrap"> 
                                 <div class="row-bg" data-color_overlay="#40ceff" data-color_overlay_2="#5a2ff1" data-gradient_direction="left_to_right" data-overlay_strength="1" data-enable_gradient="true"></div>
@@ -75,7 +75,9 @@
                             <img src="{% if jekyll.environment == 'production' %}{{ site.snet.baseurl }}{% endif %}/theme/assets/images/layout/{{ item.title }}.png" class="quick-set-guide-img">                            
                             <h4>{{ item.title }}</h4>
                             <p >{{ item.excerpt }}</p>
-                            <button class="btn">{{ item.cta }}</button>
+                            <a href="{{ item.url }}">
+                                <button class="btn">{{ item.cta }}</button>
+                            </a>
                         </li>
                         {% endfor %}
                     </ul>
@@ -95,7 +97,7 @@
                 </div>
                 <!-- quick guide waves -->
                 <div class="inner">
-                    <div id="roadmap-row" data-midnight="light" data-bg-mobile-hidden="" class="wpb_row vc_row-fluid vc_row full-width-section standard_section" style={{ visibility: "visible"}} data-top-percent="4%" data-bottom-percent="4%">
+                    <div id="roadmap-row" data-midnight="light" data-bg-mobile-hidden="" class="wpb_row vc_row-fluid vc_row full-width-section standard_section" style={{ visibility : "visible"}} data-top-percent="4%" data-bottom-percent="4%">
                          <div class="row-bg-wrap instance-2">
                             <div class="inner-wrap"> 
                                 <div class="row-bg" data-color_overlay="#40ceff" data-color_overlay_2="#5a2ff1" data-gradient_direction="left_to_right" data-overlay_strength="1" data-enable_gradient="true"></div>

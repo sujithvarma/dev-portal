@@ -27,17 +27,17 @@ section_main_callouts:
 # Quick Set Up 
 section_quick_setup:
     title: Quick Setup Guide
-    description: Follow these steps tailored for your usecase to setup all components quickly.2 Lorem ipsum dolor sit amet, consectetur adipisicing elit.    
+    description: Follow these steps tailored for your usecase to setup all components quickly
     
 quick_setup_guides:
     - title: AI Developer
-      excerpt: Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
-      cta: Documents for Developer
-      url: '/docs/concepts'
+      excerpt: These articles are intended to guide AI service providers.
+      cta: Documents for Developer here
+      url: '/docs/provider'
     - title: AI Consumer
-      excerpt: Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
+      excerpt: These tutorials teach you how to buy SingularityNET Services to integrate in your application.
       cta: Documents for Consumer
-      url: '/docs/setup'
+      url: '/docs/buyer'
 
 # FAQ and Forums Info
 faq_forums_info:

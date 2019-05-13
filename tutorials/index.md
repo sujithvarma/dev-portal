@@ -41,5 +41,5 @@ Guides to implementing a service in a number of programming languages. Is you fa
 
 ## Workshop Tutorials
 
-- [Use docker to publish a SingularityNET Service](/workshops/docker-snet)
-- [Getting started with Docker (OpenCog)](/workshops/docker-opencog) - Use docker to work with OpenCog tools.
+- [Use docker to publish a SingularityNET Service](/tutorials/docker-snet)
+- [Getting started with Docker (OpenCog)](/tutorials/docker-opencog) - Use docker to work with OpenCog tools.
