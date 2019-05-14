@@ -40,27 +40,25 @@
 -->
 {% if site.snet.footer.content.logo.image or site.snet.footer.content.logo.text or site.snet.footer.content.copyright or site.snet.footer.social_list %}
 <footer class="site-footer">
-    <div class="container">
-        <div class="row copyright">
-            <div class="col-sm-6 footer-left">
-                {% if site.snet.footer.content.copyright %}
-                <p class="site-footer__copyright">{{ site.snet.footer.content.copyright }}</p>
-                {% endif %}
-            </div>
-            {% if site.snet.footer.social_list %}
-            <div class="col-sm-6 align-right footer-right">
-                <ul class="social-list">
-                    {% for item in site.snet.footer.social_list %}
-                    <li>
-                        <a href="{{ item.profile_url }}" target="_blank" class="social-list__item social-list__item--{{ item.network_name }}">
-                            <i class="icon icon--{{ item.network_name }}"></i>
-                        </a>
-                    </li>
-                    {% endfor %}
-                </ul><!-- /.social-list -->
-            </div><!-- /.col -->
+    <div class="wrapper row">
+        <div class="col-xs-12 col-sm-6 col-md-6 col-lg-6">
+            {% if site.snet.footer.content.copyright %}
+            <p class="site-footer__copyright">{{ site.snet.footer.content.copyright }}</p>
             {% endif %}
         </div>
+        {% if site.snet.footer.social_list %}
+        <div class="col-xs-12 col-sm-6 col-md-6 col-lg-6 social-icons-container">
+            <ul class="social-list">
+                {% for item in site.snet.footer.social_list %}
+                <li>
+                    <a href="{{ item.profile_url }}" target="_blank" class="social-list__item social-list__item--{{ item.network_name }}">
+                        <i class="icon icon--{{ item.network_name }}"></i>
+                    </a>
+                </li>
+                {% endfor %}
+            </ul><!-- /.social-list -->
+        </div><!-- /.col -->
+        {% endif %}
     </div><!-- /.container -->
 </footer><!-- /.site-footer -->
 
