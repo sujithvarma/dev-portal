@@ -1,3 +1,14 @@
+{% if site.snet.header.nav %}
+<div class="offcanvas d-block d-md-none">
+    <ul class="offcanvas__nav">
+        {% for item in site.snet.header.nav %}
+        <li><a href="{% if jekyll.environment == 'production' %}{{ site.snet.baseurl }}{% endif %}{{ item.item_url }}">{{ item.item_name }}</a></li>
+        {% endfor %}
+    </ul><!-- /.offcanvas__nav -->
+</div><!-- /.offcanvas -->
+{% endif %}
+
+
 <!-- HEADER -->
 {% if site.snet.header.logo.text or site.snet.header.logo.image or site.snet.header.nav %}        
 <nav class="navbar navbar-expand-sm row">
@@ -11,6 +22,12 @@
         {% endif %}     
     </div>
     <!-- Links -->
+    <button class="bars offcanvas-toggle d-block d-md-none">
+        <span></span>
+        <span></span>
+        <span></span>
+    </button><!-- /.offcanvas-toggle -->    
+
 
     <div class="col-xs-6 col-sm-6 col-md-9">
         {% if site.snet.header.nav %}
@@ -25,26 +42,9 @@
                     {% endif %}
                 </li>
                 {% endfor %}
-            </ul><!-- /.site-header__nav -->
+            </ul>
         </div>
-        {% endif %}
-
-        {% if site.snet.header.nav %}
-        <div class="hamburger-menu {% if page.title != "Developer Portal" %} inside-page {% endif %}">
-            <button class="bars" onclick="showMenuItems()">
-                <span></span>
-                <span></span>
-                <span></span>
-            </button>
-            <ul class="navbar-nav ml-auto hamburger-menu-items">
-                {% for item in site.snet.header.nav %}
-                <li class="nav-item">
-                    <a class="nav-link" href="{{ item.item_url }}" title="{{ item.item_name }}">{{ item.item_name }}</a>
-                </li>
-                {% endfor %}
-            </ul><!-- /.site-header__nav -->
-        </div>
-        {% endif %}
+        {% endif %}      
     </div>
 </nav>
 {% endif %}
@@ -139,9 +139,9 @@
         'No Option': false,
     });
 
-    function showMenuItems(e){
-      let items = document.querySelector('.hamburger-menu-items');
-      items.classList.toggle('active');
+    function showMenuItems(e) {
+        let items = document.querySelector('.hamburger-menu-items');
+        items.classList.toggle('active');
     }
 </script>
 <!-- End Quantcast Choice. Consent Manager Tag -->
