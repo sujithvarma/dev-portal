@@ -66,8 +66,6 @@ li { list-style: none; }
 .wrapper {
     width: 1100px;
     margin: 0 auto;
-    position: relative;
-    z-index: 5;
 }
 
 .btn {
@@ -174,20 +172,19 @@ nav ul li a:hover {
     right: 0;
     display: flex;
     flex-direction: column !important;
-    z-index: 10001;   
-    padding: 10px;    
     border-radius: 4px;   
 }
-.hamburger-menu ul li a { padding: 0 10px !important;     z-index: 10001; }
+.hamburger-menu ul li a { padding: 2px 10px !important; }
 
 .hamburger-menu ul.hamburger-menu-items { visibility: hidden; }
 .hamburger-menu ul.hamburger-menu-items.active { visibility: visible;}
-.hamburger-menu.inside-page{
-    ul.hamburger-menu-items{
+.hamburger-menu.inside-page {
+    ul.hamburger-menu-items {
         background: #fff!important;  
-        box-shadow: 1px 1px 10px rgba(85,52,101,.50);            
-        li a{
-            color: #5a2ff1!important;   
+        box-shadow: 1px 1px 10px rgba(85,52,101,.50);    
+        padding: 10px;        
+        li a {
+            color: #5a2ff1;
         }
     }
 }
