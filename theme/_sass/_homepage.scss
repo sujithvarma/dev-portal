@@ -86,19 +86,12 @@ li { list-style: none; }
     box-shadow: 1px 1px 10px rgba(85,52,101,.50);     
 }
 
-/* HEADER */
-.header { 
-    padding: 5px 56px;
-    background: linear-gradient(90deg,#40ceff,#5a2ff1); 
-    /*background-image: url('./assets/images/Singulariy_bg_pattern.png');*/
-}
+/* BLOG HEADER */
+.header { background: linear-gradient(90deg,#40ceff,#5a2ff1);  }
 
-header { 
-    padding: 0 !important; 
-}
-header h1{
-    width: 150px;
-}
+// HEADER
+header { padding: 0 !important; }
+header h1 { width: 150px; }
 
 nav {
     display: flex;
