@@ -145,7 +145,7 @@ nav ul li a:hover {
 .bars {
     padding: 5px 10px;
     border: none;
-    outline: none;
+    outline: none !important;
     background-color: transparent;
 }
 
@@ -801,13 +801,15 @@ nav ul li a:hover {
 
 /* ----- Offcanvas ----- */
 .offcanvas {
-    overflow: hidden;
-    width: 100%;
-    height: 100%;
+    // overflow: hidden;
+    // width: 100%;
+    // height: 100%;
     text-align: center;
-    background-color: #40ceff; ;
+    background-color: #5a2ff1;
     position: fixed;
     top: 0;
+    right: 0;
+    left: 0;
     bottom: 0;
     opacity: 0;
     visibility: hidden;
@@ -827,7 +829,7 @@ nav ul li a:hover {
 /* ----- Offcanvas navigation ----- */
 .offcanvas__nav {
     height: 100%;
-    overflow: scroll;
+    // overflow: scroll;
     padding-top: 5rem;
     padding-bottom: 5rem;
     -webkit-overflow-scrolling: touch;
@@ -845,7 +847,7 @@ nav ul li a:hover {
     }
 
     a {
-        color: #553465;
+        color: #fff;
         text-transform: uppercase;
     }
 }
