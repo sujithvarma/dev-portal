@@ -46,7 +46,7 @@ The following example can also be executed on the kovan test net, but you will n
 
 For our local network we assume we have the following accounts
 
-```bash
+```sh
 # First Address (snet identity): 0x592E3C0f3B038A0D673F19a18a773F993d4b2610
 # Second Address (service)     : 0x3b2b3C2e2E7C93db335E69D827F3CC4bC2A2A2cB
 ```
@@ -59,7 +59,7 @@ In order to get exactly these addresses you should run [ganache](https://truffle
 ### Starting the service (without a daemon)
 We will use a Basic_Template service that you can find [here](https://github.com/singnet/dnn-model-services).
 
-```
+```sh
 # $SINGNET_REPOS is the path from tutorial, but it could be any directory
 cd $SINGNET_REPOS
 git clone https://github.com/singnet/example-service.git
@@ -76,20 +76,24 @@ Prepare your metadata in `service_metadata.json`. We will register the second ga
 
 (KOVAN) On the KOVAN network you might want to choose another wallet.
 
-```bash
+```sh
 cd $SINGNET_REPOS
 cd example-service
 
-snet service metadata-init service/service_spec Example1 0x3b2b3C2e2E7C93db335E69D827F3CC4bC2A2A2cB
-snet service metadata-set-fixed-price 0.1
-snet service metadata-add-endpoints localhost:8080
+snet service metadata-init service/service_spec Example1 --encoding proto --service-type grpc --group-name default_group
+snet service metadata-set-fixed-price default_group 0.1
+snet service metadata-add-endpoints default_group localhost:8080
 ```
 
 Create an organization with name "testo" and organization id "testo", and publish the service with service id "tests".
 
 (KOVAN) On KOVAN you probably will need to choose another name for your organization.
 
-```
+```sh
+snet organization metadata-init testo testo individual
+snet organization metadata-add-description --description "Describe your organization details here " --short-description  "This is short description of your organization" --url "https://anyurlofyourorganization"
+snet organization add-group default_group 0x3b2b3C2e2E7C93db335E69D827F3CC4bC2A2A2cB http://127.0.0.1:2379
+
 snet organization  create testo --org-id testo -y
 snet service publish testo tests -y
 ```
@@ -98,7 +102,7 @@ snet service publish testo tests -y
 #### Preparation
 We assume that the executable file for the daemon is placed in $SINGNET_REPOS/snet-daemon/build/snetd-linux-amd64
 
-```
+```sh
 # You could start the daemon from any directory
 # We will use directory of the service
 cd $SINGNET_REPOS
@@ -114,9 +118,9 @@ ln -s ../snet-daemon/build/snetd-linux-amd64 snetd
 rm -rf storage-1.etcd
 ```
 
-#### Make a configuration file for the daemon
-
-```
+#### Make a configuration file for the daemon 
+Please note , we are using the local etcd set up here 
+```sh
 cd $SINGNET_REPOS
 cd dnn-model-services/Services/gRPC/Basic_Template/
 
@@ -136,16 +140,25 @@ cat > snetd.config.json << EOF
    "type": "stdout"
       }
    }
+   "payment_channel_storage_server": {
+           "id": "storage-1",
+           "host" : "127.0.0.1",
+           "client_port": 2379,
+           "peer_port": 2380,
+           "token": "unique-token",
+           "cluster": "storage-1=http://127.0.0.1:2380",
+           "enabled": true
+   }
 }
 EOF
 ```
 
-It should be noted that we do not provide any Ethereum identity as this daemon will not make any on-chain calls.
+
 
 #### Run the daemon
 In order to run the daemon we use the following command:
 
-```
+```sh
 ./snetd-linux-amd64
 ```
 
@@ -156,7 +169,7 @@ We are now quickly going to look at what will happen next on the **client side**
 
 (KOVAN) For the KOVAN network you should make sure that you use the right names for organization and services.
 
-```
+```sh
 # create identity in snet-cli (probably you've already done it)
 snet identity create snet-user rpc --network local
 snet identity snet-user
@@ -166,7 +179,7 @@ snet account deposit 100.1 -y
 
 # open channel with our service (organization=testo service_name=tests)
 # channel with channel_id=0 should be created and initialized after this call
-snet channel open-init testo tests 42 +20days -y
+snet channel open-init testo default_group 42 +20days -y
 
 ```
 ### Make a call using stateless logic
@@ -175,7 +188,7 @@ We are going to make a call using stateless logic [see this page for more inform
 
 First, let's request from the blockchain the list of all open channels:
 
-```
+```sh
 # take the list of channels from blockchain (from events!)
 snet channel print-all-filter-sender
 ```
@@ -185,30 +198,30 @@ We should have one channel with the recipient=0x3b2b3C2e2E7C93db335E69D827F3CC4b
 In order to make an actual call, the channel should be initialized (meaning: protobuf should be compiled).
 
 Let's check the list of initialized channels:
-```
+```sh
 snet channel print-initialized
 ```
 
 Now we can make a call.
-```
+```sh
 # we make call using stateless logic with the following arguments
 #org_id       = testo
 #service_id   = tests
 #protobuf_method  = add
 #parameters       = '{"a":10,"b":32}'
-snet client call testo tests add '{"a":10,"b":32}'
+snet client call testo tests default_group add '{"a":10,"b":32}'
 ```
 We can make a call using this state, and we can repeat this call until we spend all the tokens in the channel. There are no on-chain transactions here yet.
 
-```
-snet client call testo tests mul '{"a":6,"b":7}'
-snet client call testo tests add '{"a":10,"b":32}'
+```sh
+snet client call testo tests default_group mul '{"a":6,"b":7}'
+snet client call testo tests default_group add '{"a":10,"b":32}'
 ```
 
 ## Service Provider: Claiming the Channel with a Treasurer Server
 The service provider can use the same Ethereum address for all payment groups or she/he can use a different address. In any case, the daemons don't need to send any on-chain transaction. This means that we actually don't need to provide the daemons with direct access to the private key. Instead, a centralized server could sign the transactions from the daemons. We call such a server a treasurer server. In the current version trearurer server logic is implemented via snet-cli.
 
-```
+```sh
 # Service has second ganache idendity (--wallet-index 1)
 # Print list of unclaimed channels and total sum of unclaimed funds
 snet treasurer print-unclaimed --endpoint localhost:8080 --wallet-index 1
@@ -225,5 +238,5 @@ snet account balance --account 0x3b2b3C2e2E7C93db335E69D827F3CC4bC2A2A2cB
 
 The following logic when we ran the treasurer server:
 * The treasurer server asks the etcd to send the latest state of the channel, and increments the nonce of the channel.
-* Daemon(s) can continue to work with the client without any confirmation from the treasurer or blockchain.
+* Daemon(s) can continue to work with the client without any confirmation from the treasurer or Blockchain.
 * The treasurer sends on-chain transactions to claim funds and increases the nonce of the channel (close/reopen channel).
